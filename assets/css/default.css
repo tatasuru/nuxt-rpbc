@@ -1,0 +1,27 @@
+:root {
+  --main-text-color: #4c4948;
+}
+
+html,body {
+	min-height: 100vh;
+}
+
+.container {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+.footer {
+	margin-top: auto;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  vertical-align: bottom;
+}
+
+a:hover {
+  opacity: 0.8;
+}

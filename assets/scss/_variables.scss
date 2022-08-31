@@ -1,0 +1,101 @@
+/* =============================================
+/ ブレークポイントについて
+============================================= */
+@use "sass:math";
+
+$tab: 767px;
+@mixin tab {
+    @media (max-width: ($tab)) {
+        @content;
+    }
+}
+
+$tablar: 820px;
+@mixin tablar {
+    @media (max-width: ($tablar)) {
+        @content;
+    }
+}
+
+
+/* =============================================
+/ よく使うブレークポイントでの切り替えクラス
+============================================= */
+.pc_contents {
+    display: block;
+    @include tab() {
+        display: none !important;
+    }
+}
+
+.sp_contents {
+display: none !important;
+@include tab() {
+    display: block !important;
+}
+}
+
+
+/* =============================================
+/ get_vwの設定
+============================================= */
+@function get_vw($size, $viewport: 1536) {
+    $rate: math.div(100, $viewport);
+    @return $rate * $size * 1vw;
+}
+
+
+/*
+* ルートのフォントサイズを基準にフォントサイズを可変にする
+* @args 最大値（デザイン上の数値）
+*/
+@function clampFz($max) {
+    $value: math.div($max, 10);
+    @return clamp(10px,#{$value}rem,#{$max}px);
+}
+
+
+// 常に使う標準のフォント
+$fontFamilyYuGo: "游ゴシック体", "YuGothic", "游ゴシック", "Yu Gothic", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
+$fontFamilyHiraGo: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
+$fontFamilyYuMin: "游明朝", "YuMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", "ＭＳ Ｐ明朝", "MS PMincho", serif;
+$fontFamilyHiraMin: "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", "ＭＳ Ｐ明朝", "MS PMincho", serif;
+$fontFamilyMeiryo: "メイリオ", "Meiryo", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック", sans-serif;
+
+
+@font-face {
+    font-family: 'Times New Roman';
+    src: './font/Avenir-Black-03.ttf' format('opentype');
+}
+
+@font-face {
+    font-family: 'Avenir';
+    src: './font/Avenir.ttf' format('opentype');
+}
+
+@mixin Marcellus {
+    font-family: 'Marcellus', serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+@mixin Sorts {
+    font-family: 'Sorts Mill Goudy', serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+@mixin SortsRe {
+    font-family: 'Sorts Mill Goudy', serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+@mixin Cormorant {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+}
+
+
+
